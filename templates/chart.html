@@ -10,6 +10,28 @@
     </head>
     <body>
         <div style="width: 50%"><canvas id="pie-chart" width="600" height="400"></canvas></div>
+    <table>
+                    <tr>
+                <td>
+                    Date
+                </td>
+                <td>
+                    Mood
+                </td>
+                <td>
+                    Comment
+                </td>
+            </tr>
+        {% for item in data %}
+
+           <tr>
+               <td> {{ item["x"] }} </td>
+               <td> {{ item["y"] }} </td>
+               <td> {{ labels[loop.index-1] }} </td>
+
+           </tr>
+        {% endfor %}
+    </table>
     </body>
 
 <script>
