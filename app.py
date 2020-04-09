@@ -18,7 +18,10 @@ def process():
     if request.method == 'POST' and file_name in request.files:
         f = request.files[file_name]
         f.save(f.filename)
-        data, labels = read_data(f.filename)
+        try:
+            data, labels = read_data(f.filename)
+        except (csv.Error, UnicodeDecodeError):
+            return "upload a proper csv file you lazy bastards"
 
     return render_template('chart.html', data=data, labels=labels)
 
